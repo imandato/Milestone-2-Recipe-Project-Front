@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React, {useState} from 'react'
 import NavBar from './Components/NavBar';
@@ -14,6 +13,5 @@ function App() {
       <Gallery/>
     </div>
   );
-}
 
 export default App;
