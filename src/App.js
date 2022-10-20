@@ -2,15 +2,15 @@ import logo from './logo.svg';
 import './App.css';
 import React, {useState} from 'react'
 import NavBar from './Components/NavBar';
-import Form from './Components/Form';
+import IngredientForm from './Components/IngredientForm';
 import Gallery from './Components/Gallery';
-import RecipeCard from './Components/RecipeCard';
+
 
 function App() {
   return (
     <div className="App">
       <NavBar/>
-      <Form/>
+      <IngredientForm/>
       <Gallery/>
     </div>
   );
