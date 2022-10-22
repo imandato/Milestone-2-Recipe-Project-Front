@@ -5,7 +5,7 @@ import Home from './Home';
 import AddRecipe from './Components/AddRecipe';
 import MyRecipes from './Components/MyRecipes';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 function App() {

@@ -1,9 +1,10 @@
 import React from "react";
+import RecipeForm from "./RecipeForm";
 
 const AddRecipe = () => {
   return(
       <div className='add-recipe'>
-          add Recipe
+          <RecipeForm/>
       </div>
   )
 }
