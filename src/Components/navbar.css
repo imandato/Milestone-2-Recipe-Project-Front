@@ -1,18 +1,18 @@
-.navbar{
+#navbar{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding:  4rem 21rem;
 }
 
-.navbar_logo{
+#navbar_logo{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
 
-.name{
+#name{
     font-family: var(--font-family);
     padding-left: 1.5rem;
     font-size: 35px;
@@ -22,7 +22,7 @@
     height: 4rem;
 }
 
-.navbar_links{
+#navbar_links{
     flex: 1;
     display: flex;
     justify-content: flex-end;
@@ -41,7 +41,8 @@ li{
     
 }
 
-a{
+.linkText{
     font-weight: bolder;
     font-size: 20px;
+    color: var(--color-accent);
 }

@@ -5,16 +5,16 @@ import { Link } from "react-router-dom";
 
 function NavBar(){
     return(
-        <div className='navbar'>
-            <div className='navbar_logo'>
+        <div id='navbar'>
+            <div id='navbar_logo'>
                 <img id='logo' src={chef} alt="logo"/>
-                <div className='name'>What the Chef</div>
+                <div id='name'>What the Chef</div>
             </div>
-            <div className='navbar_links'>
-                <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/recipe">My Recipes</Link></li>
-                    <li><Link to='/recipe/new'>Add a Recipe</Link></li>
+            <div id='navbar_links'>
+                <ul id='ul'>
+                    <li id='item1'><Link style={{textDecoration: 'none', textColor: "rgba(157,47,47)"}} to="/"><h4 className='linkText'>Home</h4></Link></li>
+                    <li id='item2'><Link style={{textDecoration: 'none', textColor: "rgba(157,47,47)"}} to="/recipe"><h4 className='linkText'>My Recipes</h4></Link></li>
+                    <li id='item3'><Link style={{textDecoration: 'none', textColor: "rgba(157,47,47)"}} to='/recipe/new'><h4 className='linkText'>Add A Recipe</h4></Link></li>
                 </ul>
                
             </div>
