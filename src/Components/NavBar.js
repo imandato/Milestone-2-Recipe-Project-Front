@@ -1,6 +1,7 @@
 import React from 'react'
 import chef from '../assets/chef.png'
 import "./navbar.css"
+import { Link } from "react-router-dom";
 
 function NavBar(){
     return(
@@ -11,9 +12,9 @@ function NavBar(){
             </div>
             <div className='navbar_links'>
                 <ul>
-                    <li><a href="home">Home</a></li>
-                    <li><a href="my-recipes">My Recipes</a></li>
-                    <li><a href="add-recipe">Add a Recipe</a></li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/recipe">My Recipes</Link></li>
+                    <li><Link to='/recipe/new'>Add a Recipe</Link></li>
                 </ul>
                
             </div>
