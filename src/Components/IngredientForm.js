@@ -16,7 +16,7 @@ function IngredientForm(){
                     </Card.Text>
                         <Form style={{alignContent: "left"}}>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1"  >
-                                <Form.Control  size="lg" type="text" placeholder="Ingredients" />
+                                <Form.Control  size="lg" type="text" placeholder="Enter your ingredient" />
                             </Form.Group>
                         </Form>
                     </div>
