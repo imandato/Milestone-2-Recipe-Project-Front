@@ -7,7 +7,7 @@ import MyRecipes from './Components/MyRecipes';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import RecipeCard from './Components/RecipeCard';
 
-
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   return (
