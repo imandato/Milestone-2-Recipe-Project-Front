@@ -4,11 +4,10 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
-import { Route, Routes, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 //we’ll use Axios to fetch the data from the URL endpoint
 import axios from 'axios';
-
 
 const RecipeGallery = () => {
   const [recipeCards, setRecipeCards] = useState([]);
@@ -20,7 +19,7 @@ const RecipeGallery = () => {
   const fetchSampleRecipeCards = () => {
     let sampleCards = [
         {id: 456, title: "Hawaiian Roll Sliders", author: "TOLSTOY", 
-        description: 'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels if you like', 
+        description: 'This impressive paella is a perfect party dish and a fun meal to cook together with your guests', 
         image: "https://www.simplyrecipes.com/thmb/79mZJHsJTh4cQitQ4osT6VmPw8Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Meatball-Parm-Sliders-LEAD-5-837a559ccfab4a8ba861db245375a5f8.jpg"},
         {id: 123, title: "BAR", author: "PUSHKIN", description: "Something", image: "https://www.simplyrecipes.com/thmb/dYPC5feiBJa7JRXsbf1uM9z0ejc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Bucatini-allAmatriciana-LEAD-07-beee4133f7b14a3590ebdeaec6822519.jpg"},
         {id: 124, title: "BAZZ", author: "PLYUSHKUN", description: "Not Something", image: "https://www.simplyrecipes.com/thmb/r_N7BPB1YXE5V34r77Aw8gcDvNc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Tahini-Breakfast-Cookies-HorizontalLEAD-2-79065b66216b486188fffd836b60b748.jpg"},
@@ -47,22 +46,22 @@ const RecipeGallery = () => {
       });
   };
 
+
 return (
   <div>
      <header>
-      <h1>Recipe Gallery</h1>
+      <h1 style={{ marginBottom: "60px", textAlign: "center" }}>Recipe Gallery</h1>
       </header>
       <div className='item-container'>
-    {recipeCards.map((recipeCard) => (
-      <Card style={{ width: '20rem' }}>
+      {recipeCards.map((recipeCard) => (
+      <Card style={{ width: '20rem', marginBottom: "10px" }}>
         <div className='recipe-card' key={recipeCard.id}>
-          <Card.Title style={{ fontWeight: "bold", textAlign: "left" }}>{recipeCard.title}</Card.Title>
           <Card.Body>
-            <Card.Img style={{ height: "190px", width: "275px", border: "1px solid #E8E9EB" }} variant='top' src={recipeCard.image} alt='Food Image' />
+            <Card.Title style={{ fontWeight: "bold", textAlign: "left" }}>{recipeCard.title}</Card.Title>
+            <Card.Img style={{ height: "190px", width: "280px", border: "1px solid #E8E9EB", borderRadius: "10px", marginTop: "10px", marginBottom: "10px" }} variant='top' src={recipeCard.image} alt='Food Image' />
             <Card.Text style={{ textAlign: "left", fontWeight: "bold", color: "#b5460f" }} variant="body2" color="text.secondary">{recipeCard.author}</Card.Text>
             <Card.Text style={{ textAlign: "justify" }}>{recipeCard.description}</Card.Text>
-            {/* <Button variant="primary">Like</Button> */}
-            <Link to={`/recipecards/${recipeCard.id}`}>Read more..</Link> 
+            <Button style={{ backgroundColor: "#b5460f", border: "1px solid grey" }} href={`/recipe/${recipeCard.id}`}>Read more</Button>
           </Card.Body>
         </div>
       </Card>
@@ -73,4 +72,3 @@ return (
 }
 
 export default RecipeGallery;
-
