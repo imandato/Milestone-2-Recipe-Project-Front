@@ -52,7 +52,7 @@ return (
      <header>
       <h1 style={{ marginBottom: "60px", textAlign: "center" }}>Recipe Gallery</h1>
       </header>
-      <div className='item-container'>
+      <div className='item-container' style={{marginLeft: "11rem", marginRight: "11rem"}}>
       {recipeCards.map((recipeCard) => (
       <Card style={{ width: '20rem', marginBottom: "10px" }}>
         <div className='recipe-card' key={recipeCard.id}>

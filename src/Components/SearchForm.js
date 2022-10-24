@@ -12,11 +12,11 @@ function IngredientForm(){
                             Unlock the potential in your fridge.
                     </Card.Text>
                         <Card.Text style={{ fontSize: "1em", textAlign:"left"  }}>
-                            Add your ingredients below to see what you can make!
+                           Search for your favorite recipes below!
                     </Card.Text>
                         <Form style={{alignContent: "left"}}>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1"  >
-                                <Form.Control  size="lg" type="text" placeholder="Enter your ingredient" />
+                                <Form.Control  size="lg" type="text" placeholder="Your favorite recipes await..." />
                             </Form.Group>
                         </Form>
                     </div>
