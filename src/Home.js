@@ -1,11 +1,11 @@
 import React from "react";
-import IngredientForm from './Components/IngredientForm';
+import SearchForm from './Components/SearchForm';
 import Gallery from './Components/Gallery';
 
 const Home = () => {
   return(
       <div className="home">
-          <IngredientForm/>
+          <SearchForm/>
           <Gallery/>
       </div>
   )

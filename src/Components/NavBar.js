@@ -13,7 +13,6 @@ function NavBar(){
             <div id='navbar_links'>
                 <ul id='ul'>
                     <li id='item1'><Link style={{textDecoration: 'none', textColor: "rgba(157,47,47)"}} to="/"><h4 className='linkText'>Home</h4></Link></li>
-                    <li id='item2'><Link style={{textDecoration: 'none', textColor: "rgba(157,47,47)"}} to="/recipe"><h4 className='linkText'>My Recipes</h4></Link></li>
                     <li id='item3'><Link style={{textDecoration: 'none', textColor: "rgba(157,47,47)"}} to='/recipe/new'><h4 className='linkText'>Add A Recipe</h4></Link></li>
                 </ul>
                

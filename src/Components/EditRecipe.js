@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { Form, FormGroup } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Col from 'react-bootstrap/Col';
@@ -7,9 +8,51 @@ import Row from 'react-bootstrap/Row';
 
 
 const EditRecipe = () => {
+
+  const [ingredientList, setIngredientList] = useState([{ingredient: ""},]);
+
+  console.log(ingredientList)
+
+  const handleAddIngredient = () =>{
+    setIngredientList([...ingredientList, {ingredientList:""}])
+  }
+
+  const handleRemoveIngredient = (index) =>{
+    const list = [...ingredientList]
+    list.splice(index,1)
+    setIngredientList(list)
+  }
+
+  const handleIngredientChange = (e, index) =>{
+    const {name, value} = e.target;
+    const list = [...ingredientList];
+    list[index][name] = value;
+    setIngredientList(list);
+  }
+
+  const [stepList, setStepList] = useState([{step: ""},]);
+
+  console.log(stepList)
+
+  const handleAddStep = () =>{
+    setStepList([...stepList, {stepList:""}])
+  }
+
+  const handleRemoveStep = (index) =>{
+    const steps = [...stepList]
+    steps.splice(index,1)
+    setStepList(steps)
+  }
+
+  const handleStepChange = (e, index) =>{
+    const {name, value} = e.target;
+    const steps = [...stepList];
+    steps[index][name] = value;
+    setStepList(steps);
+  }
     return (
         <Form style={{marginLeft: "21rem", marginRight: "21rem"}}>
-          <h1 style={{color: "rgba(157,47,47)", fontWeight: "bolder", marginBottom: "5rem"}}>Edit Your Recipe!</h1>
+          <h1 style={{color: "rgba(157,47,47)", fontWeight: "bolder", marginBottom: "5rem"}}>Add Your Own Recipe!</h1>
           <hr/>
           <Row className="align-items-center" style={{display: "flex", justifyContent: "space-around", }}>
               <Col xs="auto">
@@ -36,24 +79,52 @@ const EditRecipe = () => {
           </Form.Group>
           <Form.Group className="mb-3" controlId="formDescription">
             <Form.Label style={{display: "flex", justifyContent: "start", fontWeight: "bolder",color: "rgba(157,47,47)"}}>Ingredients</Form.Label>
-            <InputGroup className="mb-2">
-                <InputGroup.Text>1</InputGroup.Text>
-                <Form.Control id="inlineFormInputGroup" placeholder="Add Ingredient..." />
+            {ingredientList.map((singleIngredient,index)=>(
+              <div key={index}>
+              <InputGroup className="mb-2">
+              <InputGroup.Text>{index+1}</InputGroup.Text>
+              <Form.Control id="inlineFormInputGroup" placeholder="Add Ingredient..." name="ingredient" value={singleIngredient.ingredient} onChange={(e)=>handleIngredientChange(e,index)}/>
               </InputGroup>
-          </Form.Group>
-          <Button type="submit" className="mb-2" style={{color: "rgba(157,47,47)", backgroundColor:"#F9F9ED", borderColor: "rgba(157,47,47)" }}>
+              <div style={{display:"flex", flexDirection:"column",justifyContent:"center", }}>
+              {ingredientList.length -1 === index &&(
+                <Button type="submit" className="mb-2" style={{color: "rgba(157,47,47)", backgroundColor:"#F9F9ED", borderColor: "rgba(157,47,47)" }} onClick={handleAddIngredient}>
                 Add an Ingredient
-          </Button>
+                </Button>
+              )}
+              {ingredientList.length -1 === index && ingredientList.length >1 &&(
+                <Button type="submit" className="mb-2" style={{color: "rgba(157,47,47)", backgroundColor:"#F9F9ED", borderColor: "rgba(157,47,47)" }} onClick={()=>handleRemoveIngredient(index)}>
+                Remove an Ingredient
+                </Button>
+              )}
+              </div>
+              </div>
+            ))}
+            
+            
+          </Form.Group>
           <Form.Group className="mb-3" controlId="formDescription">
             <Form.Label style={{display: "flex", justifyContent: "start", fontWeight: "bolder",color: "rgba(157,47,47)"}}>Steps</Form.Label>
-            <InputGroup className="mb-2">
-                <InputGroup.Text>1</InputGroup.Text>
-                <Form.Control id="inlineFormInputGroup" placeholder="Add Step..." as="textarea" rows={2} />
+            {stepList.map((singleStep,index)=>(
+              <div key={index}>
+              <InputGroup className="mb-2">
+                <InputGroup.Text>{index+1}</InputGroup.Text>
+                <Form.Control id="inlineFormInputGroup" placeholder="Add Step..." as="textarea" rows={2} name="ingredient" value={singleStep.step} onChange={(e)=>handleStepChange(e,index)}/>
               </InputGroup>
-          </Form.Group>
-          <Button type="submit" className="mb-2" style={{color: "rgba(157,47,47)", backgroundColor:"#F9F9ED", borderColor: "rgba(157,47,47)" }}>
+              <div style={{display:"flex", flexDirection:"column",justifyContent:"center", }}>
+              {stepList.length -1 === index &&(
+                <Button type="submit" className="mb-2" style={{color: "rgba(157,47,47)", backgroundColor:"#F9F9ED", borderColor: "rgba(157,47,47)" }} onClick={handleAddStep}>
                 Add a Step
-          </Button>
+                </Button>
+              )}
+              {stepList.length -1 === index && stepList.length >1 &&(
+                <Button type="submit" className="mb-2" style={{color: "rgba(157,47,47)", backgroundColor:"#F9F9ED", borderColor: "rgba(157,47,47)" }} onClick={()=>handleRemoveStep(index)}>
+                Remove a Step
+                </Button>
+              )}
+              </div>
+              </div>
+            ))}
+            </Form.Group>
           <hr/>
           <Button type="submit" className="mb-2" id="submitbtn" style={{backgroundColor: "rgba(157,47,47)", borderColor: "rgba(157,47,47)", fontWeight:"bolder"}} >
                 Submit Recipe
