@@ -81,10 +81,22 @@ const RecipeForm = () => {
             <Form.Label style={{display: "flex", justifyContent: "start", fontWeight: "bolder",color: "rgba(157,47,47)"}}>Ingredients</Form.Label>
             {ingredientList.map((singleIngredient,index)=>(
               <div key={index}>
-              <InputGroup className="mb-2">
-              <InputGroup.Text>{index+1}</InputGroup.Text>
-              <Form.Control id="inlineFormInputGroup" placeholder="Add Ingredient..." name="ingredient" value={singleIngredient.ingredient} onChange={(e)=>handleIngredientChange(e,index)}/>
-              </InputGroup>
+              
+              <Row className="align-items-center" style={{display: "flex", justifyContent: "space-around", alignContent: "center" }}>
+                <Col xs="auto">
+                  <InputGroup className="mb-2">
+                    <InputGroup.Text>{index+1}</InputGroup.Text>
+                    <Form.Control style={{width:"45rem"}} id="inlineFormInputGroup" placeholder="Add Ingredient..." name="ingredient" value={singleIngredient.ingredient} onChange={(e)=>handleIngredientChange(e,index)}/>
+                  </InputGroup>
+                </Col>
+                <Col xs="auto">
+                <InputGroup className="mb-2">
+                    <InputGroup.Text>Quantity</InputGroup.Text>
+                    <Form.Control  style={{width:"10rem"}} id="inlineFormInputGroup" placeholder="Quantity" name="quantity" value={singleIngredient.ingredient} onChange={(e)=>handleIngredientChange(e,index)}/>
+                  </InputGroup>
+                </Col>
+              </Row>
+              
               <div style={{display:"flex", flexDirection:"column",justifyContent:"center", }}>
               {ingredientList.length -1 === index &&(
                 <Button type="submit" className="mb-2" style={{color: "rgba(157,47,47)", backgroundColor:"#F9F9ED", borderColor: "rgba(157,47,47)" }} onClick={handleAddIngredient}>
