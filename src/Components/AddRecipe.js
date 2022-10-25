@@ -51,20 +51,20 @@ const RecipeForm = () => {
     setStepList(steps);
   }
     return (
-        <Form style={{marginLeft: "21rem", marginRight: "21rem"}}>
+        <Form style={{marginLeft: "15rem", marginRight: "15rem"}}>
           <h1 style={{color: "rgba(157,47,47)", fontWeight: "bolder", marginBottom: "5rem"}}>Add Your Own Recipe!</h1>
           <hr/>
           <Row className="align-items-center" style={{display: "flex", justifyContent: "space-around", }}>
               <Col xs="auto">
                 <Form.Group className="mb-3" controlId="formRecipeName">
                   <Form.Label style={{display: "flex", justifyContent: "start", fontWeight: "bolder",color: "rgba(157,47,47)"}}>Recipe Name</Form.Label>
-                  <Form.Control type="text" placeholder="Recipe Name" style={{width: "38rem"}} />
+                  <Form.Control type="text" placeholder="Recipe Name" style={{width: "31rem"}} />
                 </Form.Group>
               </Col>
               <Col xs="auto">
                 <Form.Group className="mb-3" controlId="formAuthor">
                   <Form.Label style={{display: "flex", justifyContent: "start", fontWeight: "bolder",color: "rgba(157,47,47)"}}>Author</Form.Label>
-                  <Form.Control type="text" placeholder="Author" style={{width: "38rem"}} />
+                  <Form.Control type="text" placeholder="Author" style={{width: "31rem"}} />
                  </Form.Group>
               </Col>
           </Row>
