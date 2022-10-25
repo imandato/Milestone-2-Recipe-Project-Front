@@ -13,7 +13,7 @@ const RecipeGallery = () => {
   const [recipeCards, setRecipeCards] = useState([]);
 
   useEffect(() => {
-      fetchSampleRecipeCards();
+      fetchRecipeCards();
   }, []);
 
   const fetchSampleRecipeCards = () => {
@@ -35,15 +35,9 @@ const RecipeGallery = () => {
 
 //accepts our URL endpoint
   const fetchRecipeCards = () => {
-    axios
-      .get('')
-      .then((res) => {
-        console.log(res);
-        setRecipeCards(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    fetch('http://localhost:3000/recipe')
+    .then((response)=> response.json())
+    .then((data)=> console.log(data))
   };
 
 

@@ -16,7 +16,12 @@ const RecipePage = () => {
   const [recipe, setRecipeById] = useState([]);
 
   useEffect(() => {
-    fetchSampleRecipeById();
+     const fetchData = async () =>{
+      const response = await fetch("http://localhost:3000/recipe")
+      let resData = await response.json()
+      console.log(resData)
+     } 
+     fetchData()
 }, []);
 
 const fetchSampleRecipeById = () => {
