@@ -1,0 +1,8 @@
+.card-container {
+    display: block;
+    position: absolute;
+    top: 140px;
+    left: 250px;
+    justify-content: space-between;
+    border-radius: 8px;
+  }

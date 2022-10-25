@@ -2,16 +2,6 @@ import React, { useState, useEffect, useParams } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-/*
-function Cards() {
-  // get ID from url
-  const params = useParams();
-  console.log(params); // {cardId: '123'}
-
-  return <h2>cardId is {params.cardId}</h2>;
-}
-*/
-
 const RecipePage = () => {
   const [recipe, setRecipeById] = useState([]);
 
