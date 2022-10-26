@@ -31,7 +31,7 @@ const fetchSampleRecipeById = () => {
 
 const fetchRecipeById = () => {
     axios
-      .get('https://recipe-project-back.herokuapp.com//recipe/Pizza')
+      .get('http://localhost:4000/recipe/Pizza')
       .then((res) => {
         console.log(res.data);
         setRecipeById(res.data);
