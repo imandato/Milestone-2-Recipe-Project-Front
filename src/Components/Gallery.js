@@ -34,7 +34,7 @@ const RecipeGallery = () => {
 //accepts our URL endpoint
   const fetchRecipeCards = () => {
     axios
-      .get('http://localhost:3001/recipe')
+      .get('https://recipe-project-back.herokuapp.com/recipe')
       .then((res) => {
         console.log(res);
         setRecipeCards(res.data.data);

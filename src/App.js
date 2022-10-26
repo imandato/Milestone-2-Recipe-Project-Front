@@ -18,7 +18,7 @@ function App() {
   let [message, setMessage] = useState('Search for your favorite recipes!')
   let [data, setData] = useState([])
 
-  const Data_URL = 'http://localhost:4000/'
+  const Data_URL = 'https://recipe-project-back.herokuapp.com/'
 
   useEffect(() => {
     if(search) {
