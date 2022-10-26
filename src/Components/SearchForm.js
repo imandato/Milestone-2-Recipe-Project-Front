@@ -2,7 +2,7 @@ import React from 'react'
 import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 
-function IngredientForm(){
+function SearchForm(props){
     return(
         <div className='form'>
             <div>
@@ -19,7 +19,7 @@ function IngredientForm(){
                     </Card.Text>
                         <Form style={{alignContent: "left"}}>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1"  >
-                                <Form.Control  size="lg" type="text" placeholder="Your favorite recipe awaits..." />
+                                <Form.Control  size="lg" type="text" placeholder="Your favorite recipe awaits..."  onChange={(e) => props.handleSearch(e, e.target.value)}/>
                             </Form.Group>
                         </Form>
                     </div>
@@ -30,4 +30,4 @@ function IngredientForm(){
 }
 
 
-export default IngredientForm
+export default SearchForm
