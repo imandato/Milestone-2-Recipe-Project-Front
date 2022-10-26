@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Col from 'react-bootstrap/Col';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
+import { Link } from "react-router-dom";
 
 
 const RecipeForm = () => {
@@ -175,9 +176,9 @@ const RecipeForm = () => {
             ))}
             </Form.Group>
           <hr/>
-          <Button type="submit" className="mb-2" id="submitbtn" style={{backgroundColor: "rgba(157,47,47)", borderColor: "rgba(157,47,47)", fontWeight:"bolder"}} >
+         <Link to='/'><Button type="submit" className="mb-2" id="submitbtn" style={{backgroundColor: "rgba(157,47,47)", borderColor: "rgba(157,47,47)", fontWeight:"bolder"}} >
                 Submit Recipe
-          </Button>
+          </Button></Link> 
         </Form>
       );
     }    
