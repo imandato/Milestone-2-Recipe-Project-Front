@@ -16,7 +16,8 @@ const RecipePage = () => {
   const [recipe, setRecipeById] = useState([]);
 
   useEffect(() => {
-    fetchSampleRecipeById();
+    //fetchSampleRecipeById();
+    fetchRecipeById();
 }, []);
 
 const fetchSampleRecipeById = () => {
@@ -30,19 +31,19 @@ const fetchSampleRecipeById = () => {
 
 const fetchRecipeById = () => {
     axios
-      .get('')
+      .get('http://localhost:3001/recipe/Pizza')
       .then((res) => {
-        setRecipeById(res.data);
         console.log(res.data);
+        setRecipeById(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
 };
 
   return (
     <div>
-      {recipe.map((recipe) => {
-        return (
-          <div className='recipe-container' key={recipe.id}>
+          <div className='recipe-container' key={recipe.recipe_id}>
             <div>
               <img style={{ width: "300px", height: "auto" }} className='prod-image' src={recipe.image} alt='' />
             </div>
@@ -56,8 +57,6 @@ const fetchRecipeById = () => {
               </p>
             </div>
           </div>
-        );
-      })}
       <div className='back'>
         <Link to='/'>Recipe Gallery</Link>
       </div>
