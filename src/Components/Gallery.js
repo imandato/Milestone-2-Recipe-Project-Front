@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container';
-import { Link } from 'react-router-dom';
+
 
 //we’ll use Axios to fetch the data from the URL endpoint
 import axios from 'axios';
@@ -13,7 +10,8 @@ const RecipeGallery = () => {
   const [recipeCards, setRecipeCards] = useState([]);
 
   useEffect(() => {
-      fetchSampleRecipeCards();
+      // fetchSampleRecipeCards();
+      fetchRecipeCards();
   }, []);
 
   const fetchSampleRecipeCards = () => {
@@ -36,15 +34,16 @@ const RecipeGallery = () => {
 //accepts our URL endpoint
   const fetchRecipeCards = () => {
     axios
-      .get('')
+      .get('http://localhost:3001/recipe')
       .then((res) => {
         console.log(res);
-        setRecipeCards(res.data);
+        setRecipeCards(res.data.data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
 
 
 return (
