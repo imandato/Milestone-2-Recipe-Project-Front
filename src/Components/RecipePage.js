@@ -1,45 +1,49 @@
-import React, { useState, useEffect, useParams } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
-/*
-function Cards() {
-  // get ID from url
-  const params = useParams();
-  console.log(params); // {cardId: '123'}
-
-  return <h2>cardId is {params.cardId}</h2>;
-}
-*/
 
 const RecipePage = () => {
   const [recipe, setRecipeById] = useState([]);
+  const [steps, setSteps] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
 
+  let { id } = useParams();
+  console.log(id);
+  
   useEffect(() => {
-    //fetchSampleRecipeById();
-    fetchRecipeById();
+    fetchRecipeById(id);
 }, []);
 
-const fetchSampleRecipeById = () => {
-  let sampleRecipe = [
-      {id: 456, title: "Hawaiian Roll Sliders", author: "TOLSTOY", 
-      description: 'This impressive paella is a perfect party dish and a fun meal to cook together with your guests', 
-      image: "https://www.simplyrecipes.com/thmb/79mZJHsJTh4cQitQ4osT6VmPw8Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Meatball-Parm-Sliders-LEAD-5-837a559ccfab4a8ba861db245375a5f8.jpg"}
-  ];  
-  setRecipeById(sampleRecipe);
-}
 
-const fetchRecipeById = () => {
-    axios
-      .get('http://localhost:4000/recipe/Pizza')
+const fetchRecipeById = (id) => {
+  // console.log(id);
+  axios
+      .get('http://localhost:4001/recipe/'+ id)
       .then((res) => {
         console.log(res.data);
         setRecipeById(res.data);
+        setSteps(res.data.steps);
+        setIngredients(res.data.ingredients);
       })
       .catch((err) => {
         console.log(err);
       });
 };
+
+const mappedSteps = steps.map((step, i) => 
+{
+return (
+  <li key={i}>{step.step_body}</li> 
+)
+});
+
+const mappedIngredients = ingredients.map((ingredient, i) => 
+{
+return (
+  <li key={i}>{ingredient.name}</li> 
+)
+});
 
   return (
     <div>
@@ -52,8 +56,15 @@ const fetchRecipeById = () => {
               <p style={{ textAlign: "left" }}>
                 <strong>Author:</strong> {recipe.author}
               </p>
-              <p>
-                <strong>Recipe Steps:</strong> {recipe.description}
+              <p style={{ textAlign: "left" }}>
+                <strong>Recipe Description:</strong> {recipe.description}
+              </p>
+              <p style={{ textAlign: "left" }}>
+              <strong>Ingredients: </strong> <ul>{mappedIngredients}</ul>
+              </p>
+              <p style={{ textAlign: "left" }}>
+                <strong>Steps:</strong>
+                <ul>{mappedSteps}</ul>
               </p>
             </div>
           </div>
