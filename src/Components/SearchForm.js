@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 
 function SearchForm(props){
+
     return(
         <div className='form'>
             <div>
