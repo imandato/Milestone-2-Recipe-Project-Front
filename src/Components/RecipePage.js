@@ -19,7 +19,7 @@ const RecipePage = () => {
 const fetchRecipeById = (id) => {
   // console.log(id);
   axios
-      .get('http://localhost:3001/recipe/'+ id)
+      .get('http://localhost:4001/recipe/'+ id)
       .then((res) => {
         console.log(res.data);
         setRecipeById(res.data);

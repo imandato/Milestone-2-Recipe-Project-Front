@@ -35,7 +35,7 @@ const RecipeGallery = () => {
 //accepts our URL endpoint
   const fetchRecipeCards = () => {
     axios
-    .get('http://localhost:3001/recipe')
+      .get('http://localhost:4000/recipe')
       .then((res) => {
         console.log(res);
         setRecipeCards(res.data.data);
