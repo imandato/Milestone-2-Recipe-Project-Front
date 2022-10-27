@@ -30,7 +30,7 @@ to make this repository work on your machine be sure to run
 * npm init -y 
 
 
-##Notes
+## Notes
 Possible future ideas:
-*creating users to save recipes 
-*being able to search for recipe by ingredient
+* creating users to save recipes 
+* being able to search for recipe by ingredient
