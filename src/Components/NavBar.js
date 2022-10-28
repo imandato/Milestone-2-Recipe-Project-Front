@@ -1,6 +1,6 @@
 import React from 'react'
 import chef from '../assets/chef.png'
-import "./navbar.css"
+import "../Components/css/navbar.css"
 import { Link } from "react-router-dom";
 
 function NavBar(){

@@ -1,0 +1,24 @@
+*{
+    box-sizing: border-box;
+}
+
+.item-container{
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 4rem;
+}
+
+.recipe-card{
+    flex:2 0 21%;;
+}
+
+.card-img{
+  height: "9px";
+   width: "280px";
+  border: "1px solid #E8E9EB";
+ border-radius: "10px";
+  margin-top: "10px";
+ margin-bottom: "10px"; 
+}

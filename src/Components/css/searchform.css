@@ -1,0 +1,13 @@
+*{
+    box-sizing: border-box;
+}
+
+.food-pic{
+     height: "570px";
+     width: "55%" ;
+     position: "relative"; 
+     left: "80px";
+     border-radius: "10px";
+     margin-bottom: "70px";
+     border: "1px solid #E8E9EB"; 
+}
