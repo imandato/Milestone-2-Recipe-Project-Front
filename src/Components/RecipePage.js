@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
+import "./css/recipepage.css"
 
 
 const RecipePage = () => {
@@ -19,7 +20,7 @@ const RecipePage = () => {
 const fetchRecipeById = (id) => {
   // console.log(id);
   axios
-      .get('http://localhost:4001/recipe/'+ id)
+      .get('http://localhost:4000/recipe/'+ id)
       .then((res) => {
         console.log(res.data);
         setRecipeById(res.data);
@@ -34,24 +35,24 @@ const fetchRecipeById = (id) => {
 const mappedSteps = steps.map((step, i) => 
 {
 return (
-  <li key={i}>{step.step_body}</li> 
+  <li style={{margin:".5rem"}} key={i}>{step.step_body}</li> 
 )
 });
 
 const mappedIngredients = ingredients.map((ingredient, i) => 
 {
 return (
-  <li key={i}>{ingredient.name}</li> 
+  <li   key={i}>{ingredient.name}</li> 
 )
 });
 
   return (
     <div>
           <div className='recipe-container' key={recipe.recipe_id}>
-            <div>
-              <img style={{ width: "300px", height: "auto" }} className='prod-image' src={recipe.image} alt='' />
+            <div className='image-container'>
+              <img className='prod-image' src={recipe.image} alt='' />
             </div>
-            <div>
+            <div className='text-container'>
               <h1 style={{ textAlign: "left" }} className='title'>{recipe.title}</h1>
               <p style={{ textAlign: "left" }}>
                 <strong>Author:</strong> {recipe.author}
@@ -59,18 +60,19 @@ return (
               <p style={{ textAlign: "left" }}>
                 <strong>Recipe Description:</strong> {recipe.description}
               </p>
-              <p style={{ textAlign: "left" }}>
-              <strong>Ingredients: </strong> <ul>{mappedIngredients}</ul>
+              <p >
+              <strong><u>Ingredients</u></strong> 
+              <ul>{mappedIngredients}</ul>
               </p>
               <p style={{ textAlign: "left" }}>
                 <strong>Steps:</strong>
-                <ul>{mappedSteps}</ul>
+                <ol>{mappedSteps}</ol>
               </p>
             </div>
           </div>
-      <div className='back'>
+      {/* <div className='back'>
         <Link to='/'>Recipe Gallery</Link>
-      </div>
+      </div> */}
     </div>
   );
 }
