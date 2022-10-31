@@ -12,31 +12,36 @@ const Home = () => {
   let [message, setMessage] = useState('Search for your favorite recipes!')
   let [data, setData] = useState([])
 
-
+// let recipeUrl 
+// if(search = ""){
+//   recipeUrl = "http://localhost:4000/recipe"
+//   }else{
+//     recipeUrl =`http://localhost:4000/recipe?title=${search}`
+//   }
 
 //   useEffect(()=>{
 //       axios
 //       .get(`http://localhost:4000/recipe?title=${search}`)
 //       .then((res) => {
-//         console.log('searched')
+//         console.log(search)
 //         setData(res.data.data)
 //       })
 //       .catch((err) => {
 //         console.log(err);
 //       });
   
-// },[search])
+// },[setSearch])
 
 
 useEffect(()=>{
-  if(search){
+
     const fetchData = async () =>{
       const response = await fetch(`http://localhost:4000/recipe?title=${search}`)
       const resData = await response.json()
-      setData(resData.data.data)
+      setData(resData.data)
     }
     fetchData()
-  }
+  
   
 },[search])
 

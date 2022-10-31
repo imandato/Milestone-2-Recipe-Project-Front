@@ -2,12 +2,41 @@
     box-sizing: border-box;
 }
 
-.food-pic{
-     height: "570px";
-     width: "55%" ;
-     position: "relative"; 
+.img-container{
+    
+     width: "25%" ;
+
      left: "80px";
      border-radius: "10px";
      margin-bottom: "70px";
      border: "1px solid #E8E9EB"; 
+     flex-shrink: 1;
+   
+}
+
+
+.form-card{
+    background-color: #daa7a7;
+    
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+}
+
+/* style={{ width: "40rem", minHeight: "428px", marginBottom: "100px", backgroundColor: "#daa7a7", marginLeft: "12rem", marginTop: "5rem" }} */
+
+/* more card style style={{ top: "auto", width: "30rem", marginLeft: "50px", marginBottom: "50px", paddingTop: "50px"}} */
+
+.form{
+   
+   
+}
+
+.container2{
+   
+    display: flex;
+    flex-direction:row-reverse;
+    justify-content:center;
 }

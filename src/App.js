@@ -15,59 +15,7 @@ import { Switch } from '@mui/material';
 
 function App() {
 
- // let [search, setSearch] = useState('')
- // let [message, setMessage] = useState('Search for your favorite recipes!')
- // let [data, setData] = useState([])
-//
- // console.log(search)
-
-  //if no search input find all recipes 
-  //let Data_URL = 'http://localhost:4000/recipes'
-  // if(search == ''){
-  // Data_URL = 'http://localhost:4000/'
-  // }else{
-  //   Data_URL = 'http://localhost:4000/?title='
-  // }
-
-  //console.log(data)
-
- // useEffect(() => {
-    // if(search) {
-        // const fetchData = async () => {
-        //     const response = await fetch("http://localhost:4000/recipes" + search)
-        //     const resData = await response.json()
-            // if (resData.results.length > 0) {
-            //     return setData(resData)
-            // } else {
-            //     return setMessage('Not Found')
-            // }
-        //     console.log(resData)
-        //     setData(resData)
-        // }
-        // fetchData()
-    //}
-//}, [search])
-
-// useEffect(()=>{
-//     axios
-//       .get('http://localhost:4000/recipe')
-//       .then((res) => {
-//         console.log(res);
-//         setData(res.data.data)
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-  
-// },[])
-
-// const handleSearch = (e, term) => {
-//     e.preventDefault()
-//     setSearch(term)
-// }
-
-
-
+//sets up all routes 
   return (
     <div className="App">
       <Router>
