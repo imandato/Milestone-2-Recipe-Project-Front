@@ -2,8 +2,14 @@ import React from 'react'
 import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 import './css/searchform.css'
+import { useState } from 'react'
 
 function SearchForm(props){
+    
+    let [searchTerm, setSearchTerm] = useState('')
+    
+ 
+
     return(
         <div className='form'>
             <div>
@@ -20,9 +26,19 @@ function SearchForm(props){
                     </Card.Text>
                         <Form style={{alignContent: "left"}}>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1"  >
-                                <Form.Control  size="lg" type="text" placeholder="Your favorite recipe awaits..."  onChange={(e) => props.handleSearch(e, e.target.value)}/>
+                                <Form.Control  size="lg" type="text" placeholder="Your favorite recipe awaits..."  onChange={(e) => props.handleSearch(e, searchTerm)}/>
                             </Form.Group>
+                            
                         </Form>
+                        {/* <form onSubmit={(e) => props.handleSearch(e, searchTerm)}>
+                         <input type="text" placeholder = "Search for Recipe"
+                         onChange={(e) => setSearchTerm(e.target.value)} />
+
+                         <input type ="submit"/>
+
+                        
+                        </form> */}
+                     
                     </div>
                 </Card>
              </div>

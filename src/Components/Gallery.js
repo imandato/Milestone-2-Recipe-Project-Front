@@ -7,13 +7,18 @@ import "./css/gallery.css"
 //we’ll use Axios to fetch the data from the URL endpoint
 import axios from 'axios';
 
-const RecipeGallery = () => {
+const RecipeGallery = ({data}) => {
   const [recipeCards, setRecipeCards] = useState([]);
 
-  useEffect(() => {
-      // fetchSampleRecipeCards();
-      fetchRecipeCards();
-  }, []);
+
+// console.log(props.search)
+
+  // setRecipeCards(props.data)
+
+//   useEffect(() => {
+//      fetchRecipeCards();
+
+//  }, []);
 
   /*
   const fetchSampleRecipeCards = () => {
@@ -34,17 +39,18 @@ const RecipeGallery = () => {
 */
 
 //accepts our URL endpoint
-  const fetchRecipeCards = () => {
-    axios
-      .get('http://localhost:4000/recipe')
-      .then((res) => {
-        console.log(res);
-        setRecipeCards(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const fetchRecipeCards = async(data) => {
+  //   const res = await data
+  //   axios
+  //     .get('http://localhost:4000/recipe')
+  //     .then((res) => {
+  //       console.log(res);
+  //       setRecipeCards(res.data.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
 
 
@@ -54,8 +60,8 @@ return (
       <h1 style={{ marginBottom: "60px", textAlign: "center" }}>Recipe Gallery</h1>
       </header>
       <div className='item-container'>
-      {recipeCards.map((recipeCard) => (
-      <Card style={{ width: '20rem', marginBottom: "10px" }}>
+      {data.map((recipeCard, i) => (
+      <Card key={i} style={{ width: '20rem', marginBottom: "10px" }}>
         <div className='recipe-card' key={recipeCard.recipe_id}>
           <Card.Body>
             <Card.Title style={{ fontWeight: "bold", textAlign: "left" }}>{recipeCard.title}</Card.Title>
