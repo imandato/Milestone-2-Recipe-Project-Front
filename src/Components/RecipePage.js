@@ -42,7 +42,11 @@ return (
 const mappedIngredients = ingredients.map((ingredient, i) => 
 {
 return (
-  <li   key={i}>{ingredient.name}</li> 
+  // <li   key={i}>{ingredient.name}: Quantity:{ingredients[i].Recipe_ingredient.quantity}</li> 
+   <tr key={i}>
+    <td>{ingredient.name}</td>
+    <td>{ingredients[i].Recipe_ingredient.quantity}</td>
+   </tr>
 )
 });
 
@@ -60,14 +64,23 @@ return (
               <p style={{ textAlign: "left" }}>
                 <strong>Recipe Description:</strong> {recipe.description}
               </p>
-              <p >
+              <p>
               <strong><u>Ingredients</u></strong> 
-              <ul>{mappedIngredients}</ul>
               </p>
+              
+              <table>
+                <tr>
+                  <th>Ingredient</th>
+                  <th>Quantity</th>
+                </tr>
+                {mappedIngredients}
+              </table>
+
               <p style={{ textAlign: "left" }}>
-                <strong>Steps:</strong>
+                <strong>Steps:</strong></p>
+
                 <ol>{mappedSteps}</ol>
-              </p>
+              
             </div>
           </div>
       {/* <div className='back'>
