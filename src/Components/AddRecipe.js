@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Form, FormGroup } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Col from 'react-bootstrap/Col';
+import FormRange from "react-bootstrap/esm/FormRange";
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 import { Link } from "react-router-dom";
@@ -15,10 +16,10 @@ const RecipeForm = () => {
 
   const [ingredientList, setIngredientList] = useState([{ingredient: ""},]);
 
-  console.log(ingredientList)
+  //console.log(ingredientList)
 
   const handleAddIngredient = () =>{
-    setIngredientList([...ingredientList, {ingredientList:""}])
+    setIngredientList([...ingredientList, {ingredient:""}])
   }
 
   const handleRemoveIngredient = (index) =>{
@@ -28,18 +29,19 @@ const RecipeForm = () => {
   }
 
   const handleIngredientChange = (e, index) =>{
-    const {name, value} = e.target;
+    const {value} = e.target;
     const list = [...ingredientList];
-    list[index][name] = value;
+    list[index]["ingredient"] = value;
     setIngredientList(list);
+    console.log(ingredientList)
   }
 
   const [quantityList, setQuantityList] = useState([{quantity: ""},]);
 
-  console.log(ingredientList)
+  //console.log(ingredientList)
 
   const handleAddQuantity = () =>{
-    setQuantityList([...quantityList, {quantityList:""}])
+    setQuantityList([...quantityList, {quantity:""}])
   }
 
   const handleRemoveQuantity= (index) =>{
@@ -49,18 +51,18 @@ const RecipeForm = () => {
   }
 
   const handleQuantityChange = (e, index) =>{
-    const {name, value} = e.target;
+    const {value} = e.target;
     const list = [...quantityList];
-    list[index][name] = value;
+    list[index]["quantity"] = value;
     setIngredientList(list);
   }
 
   const [stepList, setStepList] = useState([{step: ""},]);
 
-  console.log(stepList)
+  //console.log(stepList)
 
   const handleAddStep = () =>{
-    setStepList([...stepList, {stepList:""}])
+    setStepList([...stepList, {step:""}])
   }
 
   const handleRemoveStep = (index) =>{
@@ -70,14 +72,15 @@ const RecipeForm = () => {
   }
 
   const handleStepChange = (e, index) =>{
-    const {name, value} = e.target;
+    const {value} = e.target;
     const steps = [...stepList];
-    steps[index][name] = value;
+    steps[index]["step"] = value;
     setStepList(steps);
+    console.log(stepList)
   }
     return (
       <div style={{display: "flex", justifyContent:"center"}}>
-        <Form action="http://localhost:4000/recipe" method='POST' style={{marginLeft: "15rem", marginRight: "15rem"}}>
+        <Form action="http://localhost:4000/recipe" method='POST'>
           <h1 style={{color: "rgba(157,47,47)", fontWeight: "bolder", marginBottom: "5rem"}}>Add Your Own Recipe!</h1>
           <hr/>
           <Row className="align-items-center" style={{ }}>
@@ -107,10 +110,20 @@ const RecipeForm = () => {
             <Form.Label style={{ fontWeight: "bolder",color: "rgba(157,47,47)"}}>Ingredients</Form.Label>
             {ingredientList.map((singleIngredient,index)=>(
               <div key={index}>
-              <InputGroup className="mb-2">
-                <InputGroup.Text>{index+1}</InputGroup.Text>
-                <Form.Control style={{maxWidth:"45rem"}} name="name" placeholder="Add Ingredient..."  value={singleIngredient.ingredient} onChange={(e)=>handleIngredientChange(e,index)}/>
-              </InputGroup>
+                <Row className="align-items-center" style={{ }}>
+              <Col xs="auto">
+                <InputGroup className="mb-2">
+                  <InputGroup.Text>{index+1}</InputGroup.Text>
+                    <Form.Control style={{maxWidth:"45rem"}} type="text" name="name" value={singleIngredient.ingredient} placeholder="Add Ingredient..." onChange={(e)=>handleIngredientChange(e,index)}/>
+                  </InputGroup>
+                  </Col>
+                  <Col xs="auto">
+                    <InputGroup className="mb-2">
+                      <Form.Label style={{color: "rgba(157,47,47)", padding:".2rem"}}>Quantity</Form.Label>
+                      <Form.Control  placeholder="Add Quantity..." type="text" name="quantity"/>
+                    </InputGroup>
+                </Col>
+              </Row>
               <div style={{display:"flex", flexDirection:"column",justifyContent:"center", }}>
               {ingredientList.length -1 === index &&(
                 <Button type="submit" className="mb-2" style={{color: "rgba(157,47,47)", backgroundColor:"#F9F9ED", borderColor: "rgba(157,47,47)" }} onClick={handleAddIngredient}>
@@ -126,7 +139,7 @@ const RecipeForm = () => {
               </div>
             ))}
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formDescription">
+          {/* <Form.Group className="mb-3" controlId="formDescription">
             <Form.Label style={{ fontWeight: "bolder",color: "rgba(157,47,47)"}}>Quantities</Form.Label>
             {ingredientList.map((singleIngredient,index)=>(
               <div key={index}>
@@ -134,12 +147,12 @@ const RecipeForm = () => {
                 <InputGroup.Text>{singleIngredient.ingredient}</InputGroup.Text>
                 {quantityList.map((singleQuantity,index)=>(
                   <div key={index}>
-                  <Form.Control  placeholder="Add Quantity..." name="quantity" value={singleQuantity.quantity} onChange={(e)=>handleQuantityChange(e,index)}/>
+                  <Form.Control  placeholder="Add Quantity..." value={singleQuantity.quantity}  onChange={(e)=>handleQuantityChange(e,index)}/>
                   </div>
                 ))}
               </InputGroup>
               <div style={{display:"flex", flexDirection:"column",justifyContent:"center", }}>
-              {/* {stepList.length -1 === index &&(
+              {stepList.length -1 === index &&(
                 <Button type="submit" className="mb-2" style={{color: "rgba(157,47,47)", backgroundColor:"#F9F9ED", borderColor: "rgba(157,47,47)" }} onClick={handleAddQuantity}>
                 Add a Quantity
                 </Button>
@@ -148,11 +161,11 @@ const RecipeForm = () => {
                 <Button type="submit" className="mb-2" style={{color: "rgba(157,47,47)", backgroundColor:"#F9F9ED", borderColor: "rgba(157,47,47)" }} onClick={()=>handleRemoveQuantity(index)}>
                 Remove a Quantity
                 </Button>
-              )} */}
+              )}
               </div>
               </div>
             ))}
-            </Form.Group>
+            </Form.Group> */}
           <Form.Group className="mb-3" controlId="formDescription">
             <Form.Label style={{ fontWeight: "bolder",color: "rgba(157,47,47)"}}>Steps</Form.Label>
             {stepList.map((singleStep,index)=>(
@@ -177,9 +190,9 @@ const RecipeForm = () => {
             ))}
             </Form.Group>
           <hr/>
-         <Link to='/'><Button type="submit" className="mb-2" id="submitbtn" style={{backgroundColor: "rgba(157,47,47)", borderColor: "rgba(157,47,47)", fontWeight:"bolder"}} >
+         <Button type="submit" className="mb-2" id="submitbtn" style={{backgroundColor: "rgba(157,47,47)", borderColor: "rgba(157,47,47)", fontWeight:"bolder"}} >
                 Submit Recipe
-          </Button></Link> 
+          </Button>
         </Form>
         </div>
       );

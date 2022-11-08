@@ -16,7 +16,7 @@ const RecipePage = () => {
     fetchRecipeById(id);
 }, []);
 
-
+//fetch the data and break it up into more easy to read labels 
 const fetchRecipeById = (id) => {
   // console.log(id);
   axios
@@ -31,7 +31,7 @@ const fetchRecipeById = (id) => {
         console.log(err);
       });
 };
-
+//create a list of all returned steps
 const mappedSteps = steps.map((step, i) => 
 {
 return (
@@ -39,6 +39,7 @@ return (
 )
 });
 
+//create multiple table rows depending on reurned ingredients and quanitity 
 const mappedIngredients = ingredients.map((ingredient, i) => 
 {
 return (
@@ -49,6 +50,7 @@ return (
    </tr>
 )
 });
+
 
   return (
     <div>
@@ -68,7 +70,7 @@ return (
               <strong><u>Ingredients</u></strong> 
               </p>
               
-              <table>
+              <table className='ingredient-table'>
                 <tr>
                   <th>Ingredient</th>
                   <th>Quantity</th>
