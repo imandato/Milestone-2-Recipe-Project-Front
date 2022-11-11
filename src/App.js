@@ -8,7 +8,7 @@ import {useEffect, useState} from 'react';
 import Gallery from './Components/Gallery';
 import RecipePage from './Components/RecipePage';
 import SearchForm from './Components/SearchForm'
-import axios from 'axios';
+import EditRecipe from './Components/EditRecipe';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Switch } from '@mui/material';
@@ -26,6 +26,7 @@ function App() {
           <Route exact path='/' element={<Gallery/>} />
           <Route exact path="/recipe/new" element={<AddRecipe />} />
           <Route exact path='/recipe/:id' element={<RecipePage />} />
+          <Route exact path='/recipe/:id/edit' element={<EditRecipe/>}/>
       </Routes>
       </Router>
     </div>

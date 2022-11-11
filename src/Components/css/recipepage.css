@@ -27,7 +27,7 @@
 }
 
 table{
-   border: 2px solid #9d2f2f;
+   border: 2px inset;
    margin: 0 auto;
    width: 40%;
 }
