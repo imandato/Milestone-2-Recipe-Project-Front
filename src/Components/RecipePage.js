@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import "./css/recipepage.css"
-
 
 const RecipePage = () => {
   const [recipe, setRecipeById] = useState([]);
   const [steps, setSteps] = useState([]);
   const [ingredients, setIngredients] = useState([]);
+
+  const navigate = useNavigate()
 
   let { id } = useParams();
   console.log(id);
@@ -51,6 +52,12 @@ return (
 )
 });
 
+async function deleteRecipe() {
+  await fetch(`http://localhost:4000/recipe/${id}`, {
+    method: 'DELETE'
+  })
+  navigate('/')
+}
 
   return (
     <div>
@@ -85,9 +92,10 @@ return (
               
             </div>
           </div>
-      {/* <div className='back'>
-        <Link to='/'>Recipe Gallery</Link>
-      </div> */}
+         <div className='button-container'>
+          <button onClick={deleteRecipe}>Delete</button>
+          <Link to={`/recipe/${id}/edit`}><button>edit recipe</button></Link>
+         </div>
     </div>
   );
 }

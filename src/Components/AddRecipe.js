@@ -6,7 +6,8 @@ import Col from 'react-bootstrap/Col';
 import FormRange from "react-bootstrap/esm/FormRange";
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 
 const RecipeForm = () => {
@@ -14,7 +15,7 @@ const RecipeForm = () => {
   
 
 
-  const [ingredientList, setIngredientList] = useState([{ingredient: ""},]);
+  const [ingredientList, setIngredientList] = useState([{ingredient: ""},{ingredient: ""}]);
 
   //console.log(ingredientList)
 
@@ -36,28 +37,7 @@ const RecipeForm = () => {
     console.log(ingredientList)
   }
 
-  const [quantityList, setQuantityList] = useState([{quantity: ""},]);
-
-  //console.log(ingredientList)
-
-  const handleAddQuantity = () =>{
-    setQuantityList([...quantityList, {quantity:""}])
-  }
-
-  const handleRemoveQuantity= (index) =>{
-    const list = [...quantityList]
-    list.splice(index,1)
-    setIngredientList(list)
-  }
-
-  const handleQuantityChange = (e, index) =>{
-    const {value} = e.target;
-    const list = [...quantityList];
-    list[index]["quantity"] = value;
-    setIngredientList(list);
-  }
-
-  const [stepList, setStepList] = useState([{step: ""},]);
+  const [stepList, setStepList] = useState([{step: ""},{step: ""}]);
 
   //console.log(stepList)
 
@@ -78,6 +58,9 @@ const RecipeForm = () => {
     setStepList(steps);
     console.log(stepList)
   }
+
+
+
     return (
       <div style={{display: "flex", justifyContent:"center"}}>
         <Form action="http://localhost:4000/recipe" method='POST'>
@@ -130,7 +113,7 @@ const RecipeForm = () => {
                 Add an Ingredient
                 </Button>
               )}
-              {ingredientList.length -1 === index && ingredientList.length >1 &&(
+              {ingredientList.length -1 === index && ingredientList.length >2 &&(
                 <Button type="submit" className="mb-2" style={{color: "rgba(157,47,47)", backgroundColor:"#F9F9ED", borderColor: "rgba(157,47,47)" }} onClick={()=>handleRemoveIngredient(index)}>
                 Remove an Ingredient
                 </Button>
@@ -180,7 +163,7 @@ const RecipeForm = () => {
                 Add a Step
                 </Button>
               )}
-              {stepList.length -1 === index && stepList.length >1 &&(
+              {stepList.length -1 === index && stepList.length >2 &&(
                 <Button type="submit" className="mb-2" style={{color: "rgba(157,47,47)", backgroundColor:"#F9F9ED", borderColor: "rgba(157,47,47)" }} onClick={()=>handleRemoveStep(index)}>
                 Remove a Step
                 </Button>
