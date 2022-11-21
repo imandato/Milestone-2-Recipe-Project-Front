@@ -36,7 +36,7 @@ const fetchRecipeById = (id) => {
 const mappedSteps = steps.map((step, i) => 
 {
 return (
-  <li style={{margin:".5rem"}} key={i}>{step.step_body}</li> 
+  <li key={i}>{step.step_body}</li> 
 )
 });
 
@@ -87,9 +87,9 @@ async function deleteRecipe() {
 
               <p style={{ textAlign: "left" }}>
                 <strong>Steps:</strong></p>
-
+              <div className='steps-container'>
                 <ol>{mappedSteps}</ol>
-              
+              </div>
             </div>
           </div>
          <div className='button-container'>
