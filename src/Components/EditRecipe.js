@@ -5,11 +5,15 @@ import Button from "react-bootstrap/Button";
 import Col from 'react-bootstrap/Col';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import "./css/editrecipe.css"
 
+
+
 const EditRecipe = () => {
+  
+  const Navigate = useNavigate()
 
   let { id } = useParams();
 //store the entire request in state
@@ -93,8 +97,6 @@ const [ingredientList, setIngredientList] = useState([]);
     setRecipeData(resData)
     console.log(recipeData)
 
-    setUpdateData({title:resData.title,author:resData.author,description:resData.description, image:resData.image})
-
     const { ingredients, steps } = resData
     //processing all the nested values for display on page
     const stepArr =[]
@@ -108,24 +110,36 @@ const [ingredientList, setIngredientList] = useState([]);
     const quantArr = [];
     ingredients.forEach((ingredient, i) => quantArr.push(ingredient.Recipe_ingredient.quantity))
     setQuantityList(quantArr)
+
+    //sets the data for our update object 
+    setUpdateData({title:resData.title,author:resData.author,description:resData.description, image:resData.image})
   }
 
-console.log(quantityList,ingredientList,stepList)
 // recipeData.steps.forEach(step => setStepList([...stepList, step.step_body]))
 
-{quantityList.map((quantity,index)=>{
-  return(
-  <Col xs="auto">
-    <InputGroup className="mb-2">
-      <Form.Label style={{color: "rgba(157,47,47)", padding:".2rem"}}>Quantity</Form.Label>
-      <Form.Control  placeholder="add quantity" value={quantity} type="text" name="quantity" onChange={(e)=>handleQunatityChange(e,index)}/>
-    </InputGroup>
-</Col>
-)})}
+async function handleSubmit(e) {
+  e.preventDefault()
+
+  setUpdateData({updateData, name:ingredientList})
+  console.log(updateData)
+
+  // await fetch(`http://localhost:4000/recipe/${id}`, {
+  //   method: 'PUT',
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: JSON.stringify(updateData)
+  // })
+
+  // Navigate(`http://localhost:3000/recipe/${id}`)
+}
+
+// old header
+{/* <Form action={`http://localhost:4000/recipe/${id}/edit`} method='PUT'> */}
 
     return (
       <div style={{display: "flex", justifyContent:"center"}}>
-        <Form action="http://localhost:4000/recipe" method='POST'>
+        <Form onSubmit={handleSubmit}>
           <h1 style={{color: "rgba(157,47,47)", fontWeight: "bolder", marginBottom: "5rem"}}>Edit Recipe : {updateData.title}!</h1>
           <hr/>
           <Row className="align-items-center" style={{ }}>
@@ -168,7 +182,7 @@ console.log(quantityList,ingredientList,stepList)
               <div className="quantitys">
               {quantityList.map((quantity,index)=>{
                 return(
-                <Col xs="auto">
+                <Col xs="auto" key={index}>
                   <InputGroup className="mb-2">
                     <Form.Label style={{color: "rgba(157,47,47)", padding:".2rem"}}>Quantity</Form.Label>
                     <Form.Control  placeholder="add quantity" value={quantity} type="text" name="quantity" onChange={(e)=>handleQunatityChange(e,index)}/>
