@@ -17,9 +17,9 @@ function SearchForm(props){
             <div className='img-container'>
             <img src="https://t4.ftcdn.net/jpg/03/78/97/59/360_F_378975954_G39M4ptXAjxKy80gbBIEo0wqBkk89gBF.jpg" alt="Card image" />
             </div>
-            <Card>
+            <Card style={{width:"40%", maxHeight:"358px", maxWidth:"600px"}}>
                     <div className="form-card">
-                        <Card.Text style={{ textAlign:"left", fontSize: "2.5em", fontWeight: "bold", }}>
+                        <Card.Text style={{ textAlign:"left", fontSize: "2.5rem", fontWeight: "bold", width:"100%" }}>
                             Unlock the potential in your fridge.
                     </Card.Text>
                         <Card.Text style={{ fontSize: "1em", textAlign:"left"  }}>

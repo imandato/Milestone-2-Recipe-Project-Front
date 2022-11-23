@@ -9,6 +9,7 @@
     font-size: 2rem;
 }
 
+
 .recipe-container ul{
     list-style: disc;
     display: flex;
@@ -21,9 +22,23 @@
     width: 100%;
 } */
 
-.image-container img{
+/* .image-container img{
     max-height: 500px;
     max-width: 32rem;
+} */
+
+.image-container{
+    max-width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.prod-image{
+    width: 100%;
+    margin: 0, auto;
+    display: block;
 }
 
 table{
@@ -39,4 +54,21 @@ th{
 td{
     padding: 7px;
     
+}
+
+.steps-container{
+    width: 100;
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 800px) {
+    table{
+        border: 2px inset;
+        margin: 0 auto;
+        width: 80%;
+     }
+     .recipe-container{
+        width: 100%;
+     }
 }

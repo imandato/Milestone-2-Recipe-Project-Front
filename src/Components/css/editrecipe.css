@@ -1,3 +1,7 @@
-#submitbtn{
-    background-color: submitbtn;
+
+
+.ingredients-container{
+    width: 100%;
+    display: flex;
+    gap: .5rem;
 }
