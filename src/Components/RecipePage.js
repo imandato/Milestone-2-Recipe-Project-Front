@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import "./css/recipepage.css"
+import Button from 'react-bootstrap/Button';
+import { margin } from '@mui/system';
 
 const RecipePage = () => {
   const [recipe, setRecipeById] = useState([]);
@@ -52,19 +54,22 @@ return (
 )
 });
 
+//deletes recipe
 async function deleteRecipe() {
+  if(window.confirm("Are you sure you want to delete this recipe")){
   await fetch(`http://localhost:4000/recipe/${id}`, {
     method: 'DELETE'
   })
   navigate('/')
 }
-
+}
   return (
     <div>
-          <div className='recipe-container' key={recipe.recipe_id}>
+          
             <div className='image-container'>
               <img className='prod-image' src={recipe.image} alt='' />
             </div>
+            <div className='recipe-container' key={recipe.recipe_id}>
             <div className='text-container'>
               <h1 style={{ textAlign: "left" }} className='title'>{recipe.title}</h1>
               <p style={{ textAlign: "left" }}>
@@ -93,8 +98,8 @@ async function deleteRecipe() {
             </div>
           </div>
          <div className='button-container'>
-          <button onClick={deleteRecipe}>Delete</button>
-          <Link to={`/recipe/${id}/edit`}><button>edit recipe</button></Link>
+          <Button style={{backgroundColor : "#9d2f2f", margin:"0.5rem"}} onClick={deleteRecipe}>Delete</Button>
+          <Link to={`/recipe/${id}/edit`}><Button style={{backgroundColor : "#9d2f2f", margin:"0.5rem"}}>edit recipe</Button></Link>
          </div>
     </div>
   );

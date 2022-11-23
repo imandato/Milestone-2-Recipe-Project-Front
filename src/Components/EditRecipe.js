@@ -117,30 +117,30 @@ const [ingredientList, setIngredientList] = useState([]);
 
 // recipeData.steps.forEach(step => setStepList([...stepList, step.step_body]))
 
-async function handleSubmit(e) {
-  e.preventDefault()
+// async function handleSubmit(e) {
+//   e.preventDefault()
 
-  setUpdateData({updateData, name:ingredientList})
-  console.log(updateData)
+//   setUpdateData({updateData, name:ingredientList})
+  
 
-  // await fetch(`http://localhost:4000/recipe/${id}`, {
-  //   method: 'PUT',
-  //   headers: {
-  //     'Content-Type': 'application/json'
-  //   },
-  //   body: JSON.stringify(updateData)
-  // })
+//   await fetch(`http://localhost:4000/recipe/${id}`, {
+//     method: 'PUT',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(updateData)
+//   })
 
-  // Navigate(`http://localhost:3000/recipe/${id}`)
-}
+//   Navigate(`http://localhost:4000/recipe/${id}`)
+// }
 
 // old header
-{/* <Form action={`http://localhost:4000/recipe/${id}/edit`} method='PUT'> */}
+//  <Form action={`http://localhost:4000/recipe/${id}/edit`} method='PUT'>
 
     return (
       <div style={{display: "flex", justifyContent:"center"}}>
-        <Form onSubmit={handleSubmit}>
-          <h1 style={{color: "rgba(157,47,47)", fontWeight: "bolder", marginBottom: "5rem"}}>Edit Recipe : {updateData.title}!</h1>
+      <Form action={`http://localhost:4000/recipe/${id}?_method=PUT`} method='POST'>
+          <h1 style={{color: "rgba(157,47,47)", fontWeight: "bolder", marginBottom: "5rem"}}>Edit Recipe : {recipeData.title}!</h1>
           <hr/>
           <Row className="align-items-center" style={{ }}>
               <Col xs="auto">
@@ -204,33 +204,6 @@ async function handleSubmit(e) {
               )}
               </div>
           </Form.Group>
-          {/* <Form.Group className="mb-3" controlId="formDescription">
-            <Form.Label style={{ fontWeight: "bolder",color: "rgba(157,47,47)"}}>Quantities</Form.Label>
-            {ingredientList.map((singleIngredient,index)=>(
-              <div key={index}>
-              <InputGroup className="mb-2">
-                <InputGroup.Text>{singleIngredient.ingredient}</InputGroup.Text>
-                {quantityList.map((singleQuantity,index)=>(
-                  <div key={index}>
-                  <Form.Control  placeholder="Add Quantity..." value={singleQuantity.quantity}  onChange={(e)=>handleQuantityChange(e,index)}/>
-                  </div>
-                ))}
-              </InputGroup>
-              <div style={{display:"flex", flexDirection:"column",justifyContent:"center", }}>
-              {stepList.length -1 === index &&(
-                <Button type="submit" className="mb-2" style={{color: "rgba(157,47,47)", backgroundColor:"#F9F9ED", borderColor: "rgba(157,47,47)" }} onClick={handleAddQuantity}>
-                Add a Quantity
-                </Button>
-              )}
-              {stepList.length -1 === index && stepList.length >1 &&(
-                <Button type="submit" className="mb-2" style={{color: "rgba(157,47,47)", backgroundColor:"#F9F9ED", borderColor: "rgba(157,47,47)" }} onClick={()=>handleRemoveQuantity(index)}>
-                Remove a Quantity
-                </Button>
-              )}
-              </div>
-              </div>
-            ))}
-            </Form.Group> */}
           <Form.Group className="mb-3" controlId="formDescription">
             <Form.Label style={{ fontWeight: "bolder",color: "rgba(157,47,47)"}}>Steps</Form.Label>
             {stepList.map((singleStep,index)=>(
