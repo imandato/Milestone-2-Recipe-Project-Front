@@ -63,7 +63,7 @@ const RecipeForm = () => {
 
     return (
       <div style={{display: "flex", justifyContent:"center"}}>
-        <Form action="http://localhost:4000/recipe" method='POST'>
+        <Form action="https://what-the-chef-backend.herokuapp.com/recipe" method='POST'>
           <h1 style={{color: "rgba(157,47,47)", fontWeight: "bolder", marginBottom: "5rem"}}>Add Your Own Recipe!</h1>
           <hr/>
           <Row className="align-items-center" style={{ }}>

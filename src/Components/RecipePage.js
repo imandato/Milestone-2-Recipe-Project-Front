@@ -23,7 +23,7 @@ const RecipePage = () => {
 const fetchRecipeById = (id) => {
   // console.log(id);
   axios
-      .get('http://localhost:4000/recipe/'+ id)
+      .get('https://what-the-chef-backend.herokuapp.com/'+ id)
       .then((res) => {
         console.log(res.data);
         setRecipeById(res.data);
@@ -57,7 +57,7 @@ return (
 //deletes recipe
 async function deleteRecipe() {
   if(window.confirm("Are you sure you want to delete this recipe")){
-  await fetch(`http://localhost:4000/recipe/${id}`, {
+  await fetch(`https://what-the-chef-backend.herokuapp.com/recipe/${id}`, {
     method: 'DELETE'
   })
   navigate('/')
