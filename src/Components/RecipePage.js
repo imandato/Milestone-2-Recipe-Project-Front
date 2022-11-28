@@ -16,14 +16,14 @@ const RecipePage = () => {
   console.log(id);
   
   useEffect(() => {
-    getInfo(id);
+    fetchRecipeById(id);
 }, []);
 
 //fetch the data and break it up into more easy to read labels 
 const fetchRecipeById = (id) => {
   // console.log(id);
   axios
-      .get('https://what-the-chef-backend.herokuapp.com/'+ id)
+      .get('http://localhost:4000/recipe/'+ id)
       .then((res) => {
         console.log(res.data);
         setRecipeById(res.data);
@@ -34,17 +34,6 @@ const fetchRecipeById = (id) => {
         console.log(err);
       });
 };
-
-  const getInfo = async (id) =>{
-    const response = await fetch('https://what-the-chef-backend.herokuapp.com/recipe/'+ id)
-    const resData = await response.json()
-    //console.log(resData.steps[0].step_body)
-    setRecipeById(resData);
-    setSteps(resData.steps);
-    setIngredients(resData.ingredients);
-    console.log(resData)
-  }
-
 //create a list of all returned steps
 const mappedSteps = steps.map((step, i) => 
 {
@@ -68,7 +57,7 @@ return (
 //deletes recipe
 async function deleteRecipe() {
   if(window.confirm("Are you sure you want to delete this recipe")){
-  await fetch(`https://what-the-chef-backend.herokuapp.com/recipe/${id}`, {
+  await fetch(`http://localhost:4000/recipe/${id}`, {
     method: 'DELETE'
   })
   navigate('/')
@@ -99,7 +88,6 @@ async function deleteRecipe() {
                   <th>Quantity</th>
                 </tr>
                 {mappedIngredients}
-                <tfoot></tfoot>
               </table>
 
               <p style={{ textAlign: "left" }}>

@@ -7,7 +7,7 @@ function NavBar(){
     return(
         <div id='navbar'>
             <div id='navbar_logo'>
-            {/* <Link to="/"><img id='logo' src={chef} alt="logo"/></Link>  */}
+            <Link to="/"><img id='logo' src={chef} alt="logo"/></Link> 
                 <div id='name'>What the Chef</div>
             </div>
             <div id='navbar_links'>
