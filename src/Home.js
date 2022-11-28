@@ -36,7 +36,7 @@ const Home = () => {
 useEffect(()=>{
 
     const fetchData = async () =>{
-      const response = await fetch(`http://localhost:4000/recipe?title=${search}`)
+      const response = await fetch(`https://what-the-chef-backend.herokuapp.com/recipe?title=${search}`)
       const resData = await response.json()
       setData(resData.data)
     }

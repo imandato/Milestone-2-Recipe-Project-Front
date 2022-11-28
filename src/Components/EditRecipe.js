@@ -91,7 +91,7 @@ const [ingredientList, setIngredientList] = useState([]);
   }, []);
   
   const getInfo = async (id) =>{
-    const response = await fetch('http://localhost:4000/recipe/'+ id)
+    const response = await fetch('https://what-the-chef-backend.herokuapp.com/recipe/'+ id)
     const resData = await response.json()
     //console.log(resData.steps[0].step_body)
     setRecipeData(resData)
@@ -115,31 +115,9 @@ const [ingredientList, setIngredientList] = useState([]);
     setUpdateData({title:resData.title,author:resData.author,description:resData.description, image:resData.image})
   }
 
-// recipeData.steps.forEach(step => setStepList([...stepList, step.step_body]))
-
-// async function handleSubmit(e) {
-//   e.preventDefault()
-
-//   setUpdateData({updateData, name:ingredientList})
-  
-
-//   await fetch(`http://localhost:4000/recipe/${id}`, {
-//     method: 'PUT',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(updateData)
-//   })
-
-//   Navigate(`http://localhost:4000/recipe/${id}`)
-// }
-
-// old header
-//  <Form action={`http://localhost:4000/recipe/${id}/edit`} method='PUT'>
-
     return (
       <div style={{display: "flex", justifyContent:"center"}}>
-      <Form action={`http://localhost:4000/recipe/${id}?_method=PUT`} method='POST'>
+      <Form action={`https://what-the-chef-backend.herokuapp.com/recipe/${id}?_method=PUT`} method='POST'>
           <h1 style={{color: "rgba(157,47,47)", fontWeight: "bolder", marginBottom: "5rem"}}>Edit Recipe : {recipeData.title}!</h1>
           <hr/>
           <Row className="align-items-center" style={{ }}>
