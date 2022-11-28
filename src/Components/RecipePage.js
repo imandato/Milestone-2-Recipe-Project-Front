@@ -16,7 +16,7 @@ const RecipePage = () => {
   console.log(id);
   
   useEffect(() => {
-    fetchRecipeById(id);
+    getInfo(id);
 }, []);
 
 //fetch the data and break it up into more easy to read labels 
@@ -34,6 +34,17 @@ const fetchRecipeById = (id) => {
         console.log(err);
       });
 };
+
+  const getInfo = async (id) =>{
+    const response = await fetch('https://what-the-chef-backend.herokuapp.com/recipe/'+ id)
+    const resData = await response.json()
+    //console.log(resData.steps[0].step_body)
+    setRecipeById(resData);
+    setSteps(resData.steps);
+    setIngredients(resData.ingredients);
+    console.log(resData)
+  }
+
 //create a list of all returned steps
 const mappedSteps = steps.map((step, i) => 
 {
@@ -88,6 +99,7 @@ async function deleteRecipe() {
                   <th>Quantity</th>
                 </tr>
                 {mappedIngredients}
+                <tfoot></tfoot>
               </table>
 
               <p style={{ textAlign: "left" }}>
