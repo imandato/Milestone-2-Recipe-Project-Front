@@ -34,3 +34,5 @@ to make this repository work on your machine be sure to run
 Possible future ideas:
 * creating users to save recipes 
 * being able to search for recipe by ingredient
+
+Link to backend: https://github.com/imandato/Milestone-2-Recipe-Project-Back
